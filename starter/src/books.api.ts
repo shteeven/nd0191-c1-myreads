@@ -1,3 +1,5 @@
+import {BookInfo} from "./book/book.models";
+
 const api = "https://reactnd-books-api.udacity.com";
 
 let token = localStorage.token;
@@ -14,13 +16,13 @@ export const get = (bookId) =>
     .then((res) => res.json())
     .then((data) => data.book);
 
-export const getAll = () =>
+export const getAll = (): Promise<BookInfo[]> =>
   fetch(`${api}/books`, { headers })
     .then((res) => res.json())
     .then((data) => data.books);
 
-export const update = (book, shelf) =>
-  fetch(`${api}/books/${book.id}`, {
+export const update = (id, shelf) => {
+  return fetch(`${api}/books/${id}`, {
     method: "PUT",
     headers: {
       ...headers,
@@ -28,6 +30,7 @@ export const update = (book, shelf) =>
     },
     body: JSON.stringify({ shelf }),
   }).then((res) => res.json());
+}
 
 export const search = (query, maxResults) =>
   fetch(`${api}/search`, {

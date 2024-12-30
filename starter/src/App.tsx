@@ -1,6 +1,6 @@
 import "./App.css";
-import {BookShelfPage} from "./BookShelfPage/BookShelfPage";
-import {SearchPage} from "./SearchPage/SearchPage";
+import {BookShelfPage} from "./book-shelf-page/BookShelfPage";
+import {SearchPage} from "./search-page/SearchPage";
 import {BrowserRouter, Route, Routes} from "react-router";
 
 function App() {
